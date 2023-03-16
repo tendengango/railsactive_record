@@ -21,7 +21,7 @@ class ExercisesController < ApplicationController
     #   * Renvoyer le nombre de commandes en appelant orders_count sur l'instance d'adresse récupérée.
     @address = Address
     .joins(:orders)
-    .Select("address.*, COUNT(orders.*).orders_count")
+    .select("address.*, COUNT(orders.*).orders_count")
     .group("address.id") 
     .order("orders_count DESC")
     .first
@@ -32,10 +32,10 @@ class ExercisesController < ApplicationController
     #   * Utilisation des jointures.
     #   * L'appel de foods_price_sum sur l'instance de client récupérée renvoie le montant total.
     @customer = Customer
-    #.joins(orders: :foods)
-    #.Select("customers.*, SUM(foods.price) AS foods_price_sum")
-    #.group("customers.id")
-    #.order("foods_price_sum DESC")
-    #.first
+    .joins(orders: :foods)
+    .select("customers.*, SUM(foods.price) AS foods_price_sum")
+    .group("customers.id")
+    .order("foods_price_sum DESC")
+    .first
   end
 end
