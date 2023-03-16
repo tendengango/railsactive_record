@@ -21,8 +21,8 @@ class ExercisesController < ApplicationController
     #   * Renvoyer le nombre de commandes en appelant orders_count sur l'instance d'adresse récupérée.
     @address = Address
     .joins(:orders)
-    .select("address.*, COUNT(orders.*).orders_count")
-    .group("address.id") 
+    .select("addresses.*, COUNT(orders.*) orders_count")
+    .group("addresses.id") 
     .order("orders_count DESC")
     .first
   end
