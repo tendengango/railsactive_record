@@ -20,11 +20,11 @@ class ExercisesController < ApplicationController
     #   * L'utilisation des jointures.
     #   * Renvoyer le nombre de commandes en appelant orders_count sur l'instance d'adresse récupérée.
     @address = Address
-    #.joins(: orders)
-    #.Select("address.*, COUNT(orders.*).orders_count")
-    #.group("address.id") 
-    #.order("orders_count DESC")
-    #.first
+    .joins(: orders)
+    .Select("address.*, COUNT(orders.*).orders_count")
+    .group("address.id") 
+    .order("orders_count DESC")
+    .first
   end
 
   def exercise4 
